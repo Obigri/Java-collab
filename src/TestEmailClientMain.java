@@ -1,10 +1,10 @@
-import javax.swing.JButton;
-
-
 
 public class TestEmailClientMain {
+
 	public static void main(String[] args) {
-		TestEmailClientFrame frame = new TestEmailClientFrame();
+
+		TestEmailClientFrame frame = new TestEmailClientFrame("Halp!", 800, 600);
 		
 	}
+
 }
