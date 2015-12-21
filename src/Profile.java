@@ -32,4 +32,20 @@ public class Profile {
 		this.username = username;
 	}
 
+	public void changeSavedMailAddress(String mailAddress) {
+		this.mailAddress = mailAddress;
+	}
+
+	public String getSavedUsername() {
+		return username;
+	}
+
+	public String getMailAddress() {
+		return mailAddress;
+	}
+
+	public Password getSavedPassword() {
+		return password;
+	}
+
 }
