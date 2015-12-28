@@ -14,8 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
-
 public class TestEmailClientFrame {
 
 	private String ownEmailAddress = "Your Email goes here";
@@ -31,14 +29,13 @@ public class TestEmailClientFrame {
 	public TestEmailClientFrame() {
 		this("No title", 800, 600);
 	}
-	
 
-	public TestEmailClientFrame(Session session){
+	public TestEmailClientFrame(Session session) {
 		this();
 		this.session = session;
 		this.props = session.getProperties();
 	}
-	
+
 	public TestEmailClientFrame(String title, int width, int height) {
 		frame = new JFrame(title);
 		frame.setSize(width, height);
@@ -46,8 +43,7 @@ public class TestEmailClientFrame {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		showDefault();
-		frame.addWindowFocusListener(new WindowFocusListener(){
-
+		frame.addWindowFocusListener(new WindowFocusListener() {
 			@Override
 			public void windowGainedFocus(WindowEvent e) {
 				ownEmailAddress = props.getProperty("email");
@@ -58,7 +54,8 @@ public class TestEmailClientFrame {
 			public void windowLostFocus(WindowEvent e) {
 				ownEmailAddress = props.getProperty("email");
 				ownEmailAddressLabel.setText(ownEmailAddress);
-			}});
+			}
+		});
 
 	}
 
@@ -73,18 +70,14 @@ public class TestEmailClientFrame {
 		topBorderElements.add(Box.createRigidArea(new Dimension(10, 0)));
 		topBorderElements.add(ownEmailAddressLabel);
 		frame.getContentPane().add(topBorderElements, BorderLayout.PAGE_START);
-
+		
 		logOutButton.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		
-		
-		
-	}
 
+	}
 
 }

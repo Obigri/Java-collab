@@ -24,7 +24,7 @@ public class LoginFrame {
 	private JLabel emailLabel = new JLabel("E-Mail");
 	private JLabel passwordLabel = new JLabel("Password");
 	private JTextField usernameTextField = new JTextField();
-	private JTextField emailTextField = new JTextField();
+	private JTextField emailTextField = new JTextField("gmail.com/googlemail.com");
 	private JPasswordField passwordTextField = new JPasswordField();
 	private JPanel lineStartPanel = new JPanel();
 	private JPanel lineEndPanel = new JPanel();
@@ -34,11 +34,11 @@ public class LoginFrame {
 	public LoginFrame() {
 		initializeFrame();
 	}
-	
-	public LoginFrame(Session session){
+
+	public LoginFrame(Session session) {
 		this();
 		this.props = session.getProperties();
-		props.put("Email", "Your Email");		
+		props.put("email", emailTextField.getText());
 	}
 
 	private void initializeFrame() {
@@ -53,14 +53,14 @@ public class LoginFrame {
 		lineStartPanel.add(emailLabel);
 		emailLabel.setPreferredSize(new Dimension(80, 70));
 		lineEndPanel.add(emailTextField);
-		emailTextField.setPreferredSize(new Dimension(260,70));
+		emailTextField.setPreferredSize(new Dimension(260, 70));
 		lineStartPanel.add(passwordLabel);
 		lineEndPanel.add(passwordTextField);
 		loginButton.setMnemonic(KeyEvent.VK_L);
 
 		emailTextField.getDocument().addDocumentListener(emailListener);
 		passwordTextField.getDocument().addDocumentListener(passwordListener);
-		
+
 		frame.getContentPane().add(lineStartPanel, BorderLayout.LINE_START);
 		frame.getContentPane().add(lineEndPanel, BorderLayout.LINE_END);
 		frame.getContentPane().add(loginButton, BorderLayout.PAGE_END);
@@ -96,27 +96,23 @@ public class LoginFrame {
 		}
 	};
 
-	private DocumentListener passwordListener = new DocumentListener(){
+	private DocumentListener passwordListener = new DocumentListener() {
 
 		@Override
 		public void insertUpdate(DocumentEvent e) {
 			props.put("password", new String(passwordTextField.getPassword()));
-			
 		}
 
 		@Override
 		public void removeUpdate(DocumentEvent e) {
 			props.put("password", new String(passwordTextField.getPassword()));
-			
 		}
 
 		@Override
 		public void changedUpdate(DocumentEvent e) {
 			props.put("password", new String(passwordTextField.getPassword()));
-			
 		}
-		
+
 	};
-	
-	
+
 }
